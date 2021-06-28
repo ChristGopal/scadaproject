@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plant Report</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.dataTables.min.css' %}"/>
+</head>
+<h1>Plant Report Dashboard</h1>
+
+<body>
+               <table id="userTable">
+                 <thead>
+                    <th>Time Record</th>
+                    <th>Flow</th>
+                    <th>Energy</th>
+                    <th>Chiller Eff</th>
+                    <th>Level</th>
+                    <th>Pressure</th>
+                    <th>Temperature</th>
+
+                <tbody>
+                        {% for i in arr_users %}
+                            <tr>
+                                <td>{{i.opc_iot_flow_timestamp}}</td>
+                                <td>{{i.opc_iot_flow_value}}</td>
+                                <td>{{i.opc_iot_energy_value}}</td>
+                                <td>{{i.opc_iot_cheff_value}}</td>
+                                <td>{{i.opc_iot_level_value}}</td>
+                                <td>{{i.opc_iot_press_value}}</td>
+                                <td>{{i.opc_iot_temp_value}}</td>
+
+                            </tr>
+                        {% endfor %}
+                </tbody>
+              </table>
+
+                    <script src="{% static 'css/jquery.min.js' %}"></script>
+                    <script type="text/javascript" src="{% static 'css/jquery.dataTables.min.js' %}"></script>
+                    <script>
+                        $(document).ready(function() {
+                            $('#userTable').DataTable();
+                        });
+                    </script>
+
+
+</body>
+</html>
